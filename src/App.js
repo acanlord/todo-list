@@ -10,6 +10,11 @@ import todosData from "./todosData"
              todos: todosData
              
          }
+         this.handleChange = this.handleChange.bind(this)
+     }
+
+     handleChange(id) {
+         
      }
      
     render() {
