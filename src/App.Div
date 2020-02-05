@@ -1,0 +1,55 @@
+import React from "react"
+import TodoItem from "./TodoItem"
+import todosData from "./todosData"
+
+
+ class App extends React.Component {
+     constructor() {
+         super()
+         this.state = {
+             todos: todosData
+             
+         }
+         this.handleChange = this.handleChange.bind(this)
+     }
+
+     handleChange(id) {
+         this.setState(prevState => {
+             const updatededTodos = prevState.todos.map(todo => {
+                 if (todo.id === id) {
+                     todo.completed =! todo.completed
+                 }
+                 return todo
+             })
+             return {
+                 todos: updatededTodos
+             }
+         })
+
+     }
+
+     // Create a new div that contains a new task
+        let newDiv = document.createElement('div');
+    // Give that div the class NewTask, and fill in the text with the name
+    newDiv.classList.add('NewTask');
+    newDiv.classList = name;
+    console.log(newDiv);
+
+    // Add the div to the page
+    resultsDiv.appendChild(newDiv);
+        
+
+    render() {
+        const todoItems = this.state.todos.map(item => <TodoItem key={item.id} item={item} 
+        handleChange={this.handleChange}/>)
+        
+        return (
+            <div className="todo-list">
+                {todoItems}
+            </div>
+        )    
+    }
+}
+
+
+export default App
